@@ -1,0 +1,86 @@
+<?php
+// require_once 'chargen/login.php';
+session_start();
+$_SESSION['id'] = session_id();
+$error_message = "";
+
+$query = new mysqli("localhost","root","ks11030315","chargen");
+
+/*if($result = $query->query("select mail from user")) {
+	while($mail = $result->fetch_assoc()) {
+		echo $mail["mail"];
+	}
+}
+*/
+
+
+if(isset($_POST['login'])) {
+	
+	if(!empty($_POST['mail']) && !empty($_POST['pass'])) {
+		/*
+		$new = new db();
+		$mail = $new->readdb($_POST['mail']);
+		$pass = readdb($_POST['pass']);
+		*/
+		if (isset($_POST['mail']) && isset($_POST['pass'])) {
+			
+			if ($result = $query->query("select mail,pass from user")) {
+			
+				while($row = $result->fetch_assoc()) {
+				
+					if($_POST['mail'] === $row['mail'] && $_POST['pass'] === $row['pass']) {
+						$_SESSION['mail'] = $_POST['mail'];
+						// echo $_SESSION['mail']; // ←ここにリダイレクト先を書く。
+						header("Location: http://localhost/chargen/main.php");
+						exit;
+					}/* else {
+				
+						echo 'ユーザー名かパスワードがまちがっています！';
+					
+					}*/
+				}
+				if($row === NULL) {
+					echo 'ユーザー名かパスワードがまちがっています！';
+				}
+				}
+			} else {
+			
+			echo '正しいアドレスとパスワードを入力してください！';
+			
+			}
+	} else {
+	
+	echo 'フォームを埋めてください。';
+	
+	}
+	
+	
+} else {
+	// echo '不正なログインです！';
+	}
+	
+
+
+ 
+?>
+
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta http-equiv="Content-Style-Type" content="text/css;charset=utf-8" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+</head>
+<body>
+<h1>CharacterGenerator</h1>
+
+<form method="post" action="index.php">
+<p>メールアドレス：<input class="form" type="text" name="mail" value="" /></p>
+<p>パスワード：<input class="form" type="password" name="pass" value="" /></p>
+<p><input class="class" type="submit" name="login" value="送信" /></p>
+</form>
+
+
+</body>
+
+</html>

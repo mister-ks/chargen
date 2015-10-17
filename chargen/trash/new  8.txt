@@ -1,0 +1,19 @@
+/*$word = array(
+		$base,
+		$detail,
+		$fact,
+		$element,
+		$sex,
+		$job,
+		$age,
+		$hobby,
+		$bground,
+		);
+	
+	$x = 0;
+	for ($i=1; $i<10; $i++) {
+		echo $word[$x];
+		$x = $i ;
+		}
+		
+		*/

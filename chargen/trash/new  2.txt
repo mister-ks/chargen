@@ -1,0 +1,15 @@
+while () {
+	
+	}
+		
+	while ($random !== fgets($file)) {
+	
+		if ($random === ) {
+	
+	
+	
+					}
+		
+			}
+	
+	$number = str

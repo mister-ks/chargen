@@ -1,0 +1,5 @@
+<td><?php echo $out ;?></td>
+
+		<th>外見</th>
+		
+			// require_once 'make_out.php';
