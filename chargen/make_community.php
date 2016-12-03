@@ -2,7 +2,7 @@
 
 	$random = rand(11,32);
 	$file = fopen('chargen/file/community.txt','r');
-		
+
 	while ($file) {
 		$line = fgets($file);
 		if ($random == substr($line,0,2)) {
@@ -11,5 +11,3 @@
 			break;
 			}
 	}
-	
-	
